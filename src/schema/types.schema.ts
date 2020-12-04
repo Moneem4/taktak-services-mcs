@@ -19,11 +19,7 @@ export enum Visibility {
     DONE="DONE",
 	PENDING="PENDING"
 }
-export enum EventPackUserType {
-	GUEST="GUEST",
-    PARTICIPENT="PARTICIPANT"
-}
-export enum PassType{
-	TICKET="TICKET",
-	RESERVATION="RESERVATION"
+export enum ServiceType{
+	FREE="FREE",
+	PREMIUM="PREMIUM"
 }
