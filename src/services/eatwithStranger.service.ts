@@ -30,7 +30,7 @@ export class EatWithStrangerService {
    
     async createEatWithStranger(@Payload() itWithStranger: Partial<EatWithStranger>):Promise<EatWithStranger> {
        
-        if (!itWithStranger || !itWithStranger.location || !itWithStranger.description) {
+        if (!itWithStranger || !itWithStranger.address || !itWithStranger.strangerId|| !itWithStranger.restaurantId) {
             console.log(`data is missing can't create itWithStranger`);
         }
         return await this.eatWithStrangerRepository.save(new EatWithStranger(itWithStranger));

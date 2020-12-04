@@ -3,37 +3,38 @@ import {  Param, Body, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import {  MongoRepository } from 'typeorm';
 import { ObjectID } from 'mongodb';
-import { FlashSave } from '../models/FlashSave.entity';
 import {  Payload} from '@nestjs/microServices';
+import {FlashSave} from 'src/models/flashSave.entity';
 
 
 
 @Injectable()
 export class FlashSaveService {
 
-    constructor(@InjectRepository(FlashSave)
-        private readonly FlashSaveRepository: MongoRepository<FlashSave>,
+    constructor( 
+        @InjectRepository(FlashSave)
+        private readonly flashSaveRepository: MongoRepository<FlashSave>,
     ) { }
 
      getFlashSaves() {
         
-        const FlashSaves=  this.FlashSaveRepository.find();       
-        return FlashSaves ;
+        const flashSaves=  this.flashSaveRepository.find();       
+        return flashSaves ;
     }
     
      getFlashSaveById(@Payload() data: string) {
        
-        const FlashSave=  this.FlashSaveRepository.findOne(data);       
+        const FlashSave=  this.flashSaveRepository.findOne(data);       
         return FlashSave ;
     }
    
    
-    async createFlashSave(@Payload() itWithStranger: Partial<FlashSave>):Promise<FlashSave> {
+    async createFlashSave(@Payload() flashSave: Partial<FlashSave>):Promise<FlashSave> {
        
-        if (!itWithStranger || !itWithStranger.location || !itWithStranger.description) {
-            console.log(`data is missing can't create itWithStranger`);
+        if (!flashSave || !flashSave.restaurantId || !flashSave.price) {
+            console.log(`data is missing can't create flashSave`);
         }
-        return await this.FlashSaveRepository.save(new FlashSave(itWithStranger));
+        return await this.flashSaveRepository.save(new FlashSave(flashSave));
     }
 
     
@@ -43,7 +44,7 @@ export class FlashSaveService {
      flashSave._id=id;
     delete flashSave._id;
     flashSave.updatedAt=new Date(Date.now());
-    const updated =  await this.FlashSaveRepository.findOneAndUpdate(
+    const updated =  await this.flashSaveRepository.findOneAndUpdate(
       {_id :ObjectID(id)},
       {$set: flashSave},
       {returnOriginal: false});
@@ -56,13 +57,13 @@ export class FlashSaveService {
     async deleteFlashSave(@Payload() id:any): Promise<boolean> {
          
          const idFlashSave = ObjectID(id);
-         const FlashSave = await this.FlashSaveRepository.findOne(idFlashSave);
+         const FlashSave = await this.flashSaveRepository.findOne(idFlashSave);
          const _id = FlashSave._id;
          if (!FlashSave) {
            return false;
          } else {
            delete FlashSave._id;
-           await this.FlashSaveRepository.findOneAndUpdate(
+           await this.flashSaveRepository.findOneAndUpdate(
              { _id: ObjectID(_id) },
              { $set: { deletedAt: new Date(Date.now()) } },
              { returnOriginal: false },

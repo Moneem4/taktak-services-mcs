@@ -1,12 +1,10 @@
 import { Controller, Param, Body} from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { FlashSave } from 'src/models/FlashSave.entity';
+import { FlashSave } from 'src/models/flashSave.entity';
 import { FlashSaveService } from 'src/services';
 @Controller('FlashSave')
 export class FlashSaveController {
     constructor(
-        @InjectRepository(FlashSave)
         private readonly flashSaveService:FlashSaveService
     ) { }
 
@@ -22,14 +20,14 @@ export class FlashSaveController {
     }
 
     @MessagePattern('createFlashSave')
-    async createFlashSave(@Body() FlashSave: Partial<FlashSave>): Promise<FlashSave> {
-       return this.flashSaveService.createFlashSave(FlashSave)
+    async createFlashSave(@Body() flashSave: Partial<FlashSave>): Promise<FlashSave> {
+       return this.flashSaveService.createFlashSave(flashSave)
     }
 
     @MessagePattern('updateFlashSave')
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    async updateServiceContributor(@Param('id') id, @Body() FlashSave: Partial<FlashSave>): Promise<FlashSave> {
-        return this.flashSaveService.updateFlashSave(id,FlashSave)
+    async updateServiceContributor(@Param('id') id, @Body() flashSave: Partial<FlashSave>): Promise<FlashSave> {
+        return this.flashSaveService.updateFlashSave(id,flashSave)
     }
     @MessagePattern('deleteFlashSave')
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

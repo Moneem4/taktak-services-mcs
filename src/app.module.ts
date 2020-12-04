@@ -23,6 +23,6 @@ import * as Services from 'src/services';
     TypeOrmModule.forFeature([...Object.values(Models)])
   ],
   controllers: [AppController, ...Object.values(Controllers)],
-  providers: [AppService,...Object.values(Services)],
+  providers: [AppService, ...Object.values(Services)],
 })
 export class AppModule {}

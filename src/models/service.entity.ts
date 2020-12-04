@@ -14,14 +14,12 @@ export class Service {
 	_id: ObjectID;
 
 	@ObjectIdColumn()
-	creatorId: ObjectID
+	userId: ObjectID
 	@Column()
 	location: string
 	@Column()
 	description: string
 
-	
-	
 	@Column()
 	filter: string
 	@Column()

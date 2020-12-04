@@ -1,12 +1,11 @@
 import { Controller, Param, Body} from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { EatWithStranger } from 'src/models/eatWithStranger.entity';
-import { EatWithStrangerService } from 'src/services/eatwithStranger.service';
+import { EatWithStrangerService } from 'src/services/eatWithStranger.service';
 @Controller('EatWithStranger')
 export class EatWithStrangerController {
     constructor(
-        @InjectRepository(EatWithStranger)
         private readonly eatWithStrangerService:EatWithStrangerService
     ) { }
 

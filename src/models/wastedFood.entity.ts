@@ -6,9 +6,11 @@ import { Service } from './service.entity';
         createdAt: 'ASC'
     }
 })
-export class WastedFood extends Service {
+export class WastedFood  {
     @ObjectIdColumn()
     _id: ObjectID
+    @ObjectIdColumn()
+    restaurantId: ObjectID
     @Column()
      updatedAt: Date=null;
 	@CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
@@ -17,8 +19,10 @@ export class WastedFood extends Service {
   deletedAt: Date=null;
     @Column()
     foods :ObjectID[]
-    constructor(wastedFood: Partial<Service>) {
-        super(name);
+    @Column()
+    utility:string
+
+    constructor(wastedFood: Partial<WastedFood>) {
         Object.assign(this, wastedFood);
 
 	  }

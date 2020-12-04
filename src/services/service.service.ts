@@ -29,13 +29,13 @@ export class ServiceService {
    
      getServiceByCreator(@Payload() data: string) {
       
-        const Services=  this.serviceRepository.find({ where: { "creatorId": data } });       
+        const Services=  this.serviceRepository.find({ where: { "userId": data } });       
         return Services ;
     }
    
     async createService(@Payload() service: Partial<Service>):Promise<Service> {
        
-        if (!service || !service.location || !service.description || !service.filter|| !service.serviceType|| !service.validation|| !service.creatorId) {
+        if (!service || !service.location || !service.description || !service.filter|| !service.serviceType|| !service.validation|| !service.userId) {
             console.log(`data is missing can't create service`);
         }
         return await this.serviceRepository.save(new Service(service));

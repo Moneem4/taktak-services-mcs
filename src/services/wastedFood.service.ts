@@ -30,7 +30,7 @@ export class WastedFoodService {
    
     async createWastedFood(@Payload() wastedFood: Partial<WastedFood>):Promise<WastedFood> {
        
-        if (!wastedFood || !wastedFood.location || !wastedFood.description) {
+        if (!wastedFood || !wastedFood.utility || !wastedFood.restaurantId) {
             console.log(`data is missing can't create wastedFood`);
         }
         

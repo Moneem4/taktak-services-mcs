@@ -1,4 +1,6 @@
 
-export * from './eatwithStranger.controller'
-export * from './task.controller'
+export * from './eatWithStranger.controller'
+export * from './flashSave.controller'
+export * from './wastedFood.controller'
+export * from './service.controller'
 
