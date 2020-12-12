@@ -1,11 +1,11 @@
-export enum AccessType {
+export enum PassType {
     CUSTOM = "CUSTOM",
     GUEST = "GUEST",
     BLACK_LISTED = "BLACK_LISTED",
   
 }
 
-export enum MbPostAccessType {
+export enum AccessType {
     BLACK_LISTED = "BLACK_LISTED",
     PRIVATE = "PRIVATE",
     PUBLIC = "PUBLIC"
