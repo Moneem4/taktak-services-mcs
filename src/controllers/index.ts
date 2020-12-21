@@ -1,9 +1,6 @@
-export * from './eventLog.controller'
-export * from './event.controller'
-export * from './eventAccess.controller'
-export * from './eventTeam.controller'
-export * from './eventPackUser.controller'
-export * from './eventPacks.controller'
-export * from './eventTeamTask.controller'
-export * from './task.controller'
-export * from './eventInvitation.controller'
+
+export * from './eatWithStranger.controller'
+export * from './flashSave.controller'
+export * from './wastedFood.controller'
+export * from './service.controller'
+

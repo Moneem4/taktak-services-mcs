@@ -1,6 +1,5 @@
-
-import { PassType } from 'src/schema/types.schema';
-import { Entity, ObjectID, ObjectIdColumn, Column, UpdateDateColumn, OneToMany, CreateDateColumn, DeleteDateColumn } from 'typeorm';
+import {ServiceType,Access } from 'src/schema/types.schema';
+import { Entity, ObjectID, ObjectIdColumn, Column, CreateDateColumn, DeleteDateColumn } from 'typeorm';
 
 @Entity({
 	name: 'Service',
@@ -9,30 +8,23 @@ import { Entity, ObjectID, ObjectIdColumn, Column, UpdateDateColumn, OneToMany, 
 	}
 })
 export class Service {
-	
-	@ObjectIdColumn()
-	_id: ObjectID;
 
 	@ObjectIdColumn()
-	creatorId: ObjectID
+	_id: ObjectID;
+	@ObjectIdColumn()
+	userId: ObjectID
 	@Column()
 	location: string
 	@Column()
 	description: string
-
-	@Column()
-	capacity: number
-	@Column()
-	plan: string
 	@Column()
 	filter: string
 	@Column()
-	passtype: PassType
+	serviceType: ServiceType
 	@Column()
 	validation: boolean
 	@Column()
-	maxPurchase: number
-	
+	serviceAccess: Access
 	@Column()
      updatedAt: Date=null;
 	@CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })

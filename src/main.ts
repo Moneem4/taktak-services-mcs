@@ -11,9 +11,9 @@ async function bootstrap() {
     const microserviceOptions = {
       transport: Transport.RMQ,
       options: {
-        urls: ['amqp://minebeat:minebeat@127.0.0.1:5672/minebeatEvents'],
-        queue: 'minebeatEvents',
-        noAck: true,
+        urls: ['amqp://taktak:taktak@127.0.0.1:5672/taktakProduct'],
+        queue: 'taktakProduct',
+        noAck: true,      
         queueOptions: {
           durable: true
         },
@@ -21,7 +21,7 @@ async function bootstrap() {
     }  
   
     const app = await NestFactory.createMicroservice(AppModule, microserviceOptions);  
-    app.listen(() => logger.log('event Microservice is listening'));
+    app.listen(() => logger.log('serviceTakTak Microservice is listening'));
   } catch (error) {
     console.log(error)
   }

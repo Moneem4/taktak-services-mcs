@@ -5,11 +5,7 @@ export enum PassType {
   
 }
 
-export enum AccessType {
-    BLACK_LISTED = "BLACK_LISTED",
-    PRIVATE = "PRIVATE",
-    PUBLIC = "PUBLIC"
-}
+
 export enum Visibility {
 	PRIVATE="PRIVATE",
 	PUBLIC="PUBLIC"
@@ -19,11 +15,13 @@ export enum Visibility {
     DONE="DONE",
 	PENDING="PENDING"
 }
-export enum EventPackUserType {
-	GUEST="GUEST",
-    PARTICIPENT="PARTICIPANT"
+
+export enum ServiceType{
+ GUEST=	"FREE",
+ PREMIUM="PREMIUM"
 }
-export enum PassType{
-	TICKET="TICKET",
-	RESERVATION="RESERVATION"
+export enum Access {
+    PRIVATE="PRIVATE",
+	PUBLIC="PUBLIC",
+	BLACK_LISTED="BLACK_LISTED"
 }
