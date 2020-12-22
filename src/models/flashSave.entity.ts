@@ -17,8 +17,6 @@ export class FlashSave {
     @Column()
     updatedAt: Date=null;
     @Column()
-    title:string
-    @Column()
     description:string
     @Column()
 	filter: string

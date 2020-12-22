@@ -20,27 +20,22 @@ export class FlashSaveService {
         
         const flashSaves=  this.flashSaveRepository.find();       
         return flashSaves ;
-    }
-    
+    } 
      getFlashSaveById(@Payload() data: string) {
        
-        const FlashSave=  this.flashSaveRepository.findOne(data);       
-        return FlashSave ;
+        const flashSave=  this.flashSaveRepository.findOne(data);       
+        return flashSave ;
     }
-   
-   
     async createFlashSave(@Payload() flashSave: Partial<FlashSave>):Promise<FlashSave> {
        
-        if (!flashSave || !flashSave.restaurantId || !flashSave.price) {
+        if (!flashSave || !flashSave.restaurantId || !flashSave.price || !flashsave.restaurantId || !flashsave.filter) {
             console.log(`data is missing can't create flashSave`);
         }
         return await this.flashSaveRepository.save(new FlashSave(flashSave));
     }
-
-    
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     async updateFlashSave(@Param('id') id, @Body() flashSave: Partial<FlashSave>): Promise<FlashSave> {
-        console.log(FlashSave);
+        console.log(flashSave);
      flashSave._id=id;
     delete flashSave._id;
     flashSave.updatedAt=new Date(Date.now());

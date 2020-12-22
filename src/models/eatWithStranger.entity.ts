@@ -19,12 +19,8 @@ export class EatWithStranger  {
    address:string
    @Column()
    updatedAt: Date=null;
-   @ObjectIdColumn()
-    userId: ObjectID
     @Column()
     description: string
-    @Column()
-    title:string
     @Column()
     strangerName: string
     @Column()

@@ -11,8 +11,6 @@ export class WastedFood  {
     _id: ObjectID
     @ObjectIdColumn()
     restaurantId: ObjectID
-    @ObjectIdColumn()
-    userId: ObjectID
     @Column()
     description: string
     @Column()
